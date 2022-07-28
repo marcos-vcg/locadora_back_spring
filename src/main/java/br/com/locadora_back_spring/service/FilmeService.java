@@ -23,7 +23,6 @@ public class FilmeService {
     }
 
     public List<Filme> buscarTodos() {
-
         return filmeRepository.findAll();
     }
 

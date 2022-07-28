@@ -21,46 +21,14 @@ import br.com.locadora_back_spring.service.GeneroService;
 
 @RestController
 @RequestMapping("/genero")
-@CrossOrigin
 public class GeneroController {
 
     @Autowired
     private GeneroService generoService;
 
-    // @GetMapping("/{id}")
-    // public ResponseEntity<Genero> genero(@PathVariable("id") Long id) {
-
-    // System.out.println("Controller Genero - Buca por ID");
-
-    // HttpStatus httpStatus = HttpStatus.OK;
-    // Genero genero = generoService.buscarPorId(id);
-
-    // if (genero == null) {
-    // httpStatus = HttpStatus.NOT_FOUND;
-    // } else {
-    // httpStatus = HttpStatus.FOUND;
-    // }
-
-    // httpStatus = Objects.isNull(genero) ? HttpStatus.NOT_FOUND :
-    // HttpStatus.FOUND;
-
-    // System.out.println("Buscou o Genero no BD");
-    // System.out.println(genero.getNome());
-
-    // return new ResponseEntity<Genero>(genero, httpStatus);
-    // }
-
     @GetMapping("/{id}")
     public Genero genero(@PathVariable("id") Long id) {
-
-        System.out.println("Controller Genero - Buca por ID");
-
-        Genero genero = generoService.buscarPorId(id);
-
-        System.out.println("Buscou o Genero no BD");
-        System.out.println(genero.getNome());
-
-        return genero;
+        return generoService.buscarPorId(id);
     }
 
     @PostMapping("")
@@ -70,13 +38,11 @@ public class GeneroController {
 
     @PutMapping("")
     public Genero editar(@RequestBody Genero genero) {
-        System.out.println("Editou");
         return generoService.salvar(genero);
     }
 
     @GetMapping("")
     public List<Genero> listar() {
-        System.out.println("Controller Genero - Listar");
         return generoService.buscarTodos();
     }
 

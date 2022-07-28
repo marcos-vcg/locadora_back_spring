@@ -18,12 +18,11 @@ public class GeneroService {
         return generoRepository.findById(id).orElse(null);
     }
 
-    public Genero salvar(Genero filme) {
-        return generoRepository.save(filme);
+    public Genero salvar(Genero genero) {
+        return generoRepository.save(genero);
     }
 
     public List<Genero> buscarTodos() {
-
         return generoRepository.findAll();
     }
 
