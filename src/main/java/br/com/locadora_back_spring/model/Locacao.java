@@ -1,10 +1,13 @@
 package br.com.locadora_back_spring.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -18,8 +21,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "filmes")
-public class Filme {
+@Table(name = "locacoes")
+public class Locacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +30,11 @@ public class Filme {
 
     String nome;
     String descricao;
-
+    
     @ManyToOne
-    @JoinColumn(name = "genero_id")
-    Genero genero;
+    @JoinColumn(name = "cliente_id")
+    Cliente cliente;
 
+    @ManyToMany
+    List<Filme> filmes;
 }

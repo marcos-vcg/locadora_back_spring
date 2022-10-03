@@ -14,39 +14,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.locadora_back_spring.model.Genero;
-import br.com.locadora_back_spring.service.GeneroService;
+import br.com.locadora_back_spring.model.Cliente;
+import br.com.locadora_back_spring.service.ClienteService;
 
 @RestController
-@RequestMapping("/genero")
-public class GeneroController {
+@RequestMapping("/cliente")
+public class ClienteController {
 
     @Autowired
-    private GeneroService generoService;
+    private ClienteService clienteService;
+
+    @GetMapping("")
+    public List<Cliente> listar() {
+        return clienteService.buscarTodos();
+    }
 
     @GetMapping("/{id}")
-    public Genero genero(@PathVariable("id") Long id) {
-        return generoService.buscarPorId(id);
+    public Cliente buscar(@PathVariable("id") Long id) {
+        return clienteService.buscarPorId(id);
     }
 
     @PostMapping("")
-    public Genero salvar(@RequestBody Genero genero) {
-        return generoService.salvar(genero);
+    public Cliente inserir(@RequestBody Cliente cliente) {
+        return clienteService.salvar(cliente);
     }
 
     @PutMapping("")
-    public Genero editar(@RequestBody Genero genero) {
-        return generoService.salvar(genero);
-    }
-
-    @GetMapping("")
-    public List<Genero> listar() {
-        return generoService.buscarTodos();
+    public Cliente editar(@RequestBody Cliente cliente) {
+        return clienteService.salvar(cliente);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable("id") Long id) {
-        generoService.deletar(id);
+        clienteService.deletar(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 

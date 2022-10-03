@@ -1,11 +1,11 @@
 package br.com.locadora_back_spring.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -18,18 +18,21 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "filmes")
-public class Filme {
+@Table(name = "clientes")
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     String nome;
-    String descricao;
-
-    @ManyToOne
-    @JoinColumn(name = "genero_id")
-    Genero genero;
+    String cpf;
+    String telefone;
+    LocalDate nascimento;
+    String cep;
+    Long estado;
+    Long cidade;
+    String endereco;
+    String complemento;
 
 }
